@@ -19,3 +19,22 @@ function processaTexto(texto) {
   const ordenadas = Object.keys(frequencias).sort((p1, p2) => frequencias[p2] - frequencias[p1]);
   return ordenadas.slice(0, 10);
 }
+
+function contaFrequencias(palavras) {
+  const frequencias = {};
+  for (let palavra of palavras) {
+    frequencias[palavra] = (frequencias[palavra] || 0) + 1;
+  }
+  return frequencias;
+}
+
+function tiraPalavrasRuins(palavras) {
+  const palavrasBoas = [];
+  for (let palavra of palavras) {
+    if (!PALAVRAS_RUINS.has(palavra) && palavra.length > 2) {
+      palavrasBoas.push(palavra);
+    }
+  }
+  return palavrasBoas;
+}
+
